@@ -31,20 +31,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  List<ItemModel> items;
-  List<ItemModel> items2;
-  int score;
-  bool gameOver;
-  @override
-  void initState() {
-    super.initState();
-    initGame();
-  }
-
-  initGame() {
-    gameOver = false;
-    score = 0;
-    items = [
+  List<ItemModel> itemsdata = [
       ItemModel(
         name: 'cat',
         value: 'cat',
@@ -66,9 +53,24 @@ class _HomepageState extends State<Homepage> {
         imgurl: "assets/images/giraf.png",
       )
     ];
+  List<ItemModel> items;
+  List<ItemModel> items2;
+  int score;
+  bool gameOver;
+  @override
+  void initState() {
+    super.initState();
+    initGame();
+  }
+
+  initGame() {
+    gameOver = false;
+    score = 0;
+    items = itemsdata.take(5).toList();
     items2 = List<ItemModel>.from(items);
     items.shuffle();
     items2.shuffle();
+    itemsdata.shuffle();
   }
 
   @override
